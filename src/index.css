@@ -1,3 +1,581 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* KEYFRAMES - ANIMACIONES */
+@keyframes aparicion-gradual {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gradiente {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes flotacion {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes flotacion-particula {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translate(10px, -15px) scale(1.2);
+    opacity: 1;
+  }
+}
+
+@keyframes parpadeo {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+@keyframes rotacion {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes ciclo-particula {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0) translateY(0);
+  }
+  10%, 90% {
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1) translateY(-30px);
+  }
+}
+
+@keyframes pulso-brillante {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1.1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes escala-hover {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.05);
+  }
+}
+
+/* ANIMACIÓN*/
+.animar-aparicion {
+  animation: aparicion 0.8s ease-out forwards;
+}
+
+.animar-gradiente {
+  background-size: 200% 200%;
+  animation: gradiente 3s ease-in-out infinite;
+}
+
+.animar-flotacion-particula {
+  animation: flotacion-particula 5s ease-in-out infinite;
+}
+
+.animar-pulso-brillante {
+  animation: pulso-brillante 2s ease-in-out infinite;
+}
+
+/* PÁGINA PRINCIPAL */
+
+/* Efecto de cursor para typewriter */
+.cursor-maquina-escribir {
+  display: inline-block;
+  width: 2px;
+  height: 25px;
+  background-color: rgb(196 181 253);
+  margin-left: 4px;
+  animation: parpadeo 1s infinite;
+}
+
+/* Efectos de hover para iconos sociales */
+.hover-icono-social {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-icono-social:hover {
+  transform: scale(1.25) translateY(-4px);
+  filter: drop-shadow(0 10px 20px rgba(139, 92, 246, 0.3));
+}
+
+/* Efectos de hover para botón CV */
+.hover-boton-cv {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.hover-boton-cv::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.hover-boton-cv:hover::before {
+  left: 100%;
+}
+
+.hover-boton-cv:hover {
+  transform: scale(1.05) translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* COMPONENTES DE AVATAR/IMAGEN */
+
+.contenedor-avatar {
+  position: relative;
+  filter: drop-shadow(0 20px 40px rgba(139, 92, 246, 0.3));
+}
+
+.brillo-avatar {
+  position: absolute;
+  inset: -20px;
+  background: conic-gradient(from 0deg, #8B5CF6, #EC4899, #8B5CF6);
+  border-radius: 50%;
+  opacity: 0.5;
+  animation: rotacion 4s linear infinite;
+  z-index: -1;
+}
+
+/* Página de inicio */
+.contenedor-imagen-perfil {
+  position: relative;
+}
+
+.brillo-fondo-perfil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgb(134, 239, 172), rgb(34, 197, 94));
+  border-radius: 50%;
+  filter: blur(3rem);
+  opacity: 0.3;
+  animation: pulso-brillante 2s ease-in-out infinite;
+  transform: scale(1.1);
+}
+
+.imagen-perfil {
+  position: relative;
+  width: 20rem;
+  height: 19rem;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid rgba(134, 239, 172, 0.3);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease;
+}
+
+.superposicion-perfil {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: linear-gradient(to top, rgba(34, 197, 94, 0.2), transparent);
+  pointer-events: none;
+}
+
+/* Título principal*/
+.titulo-principal {
+  font-size: 3.25rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+}
+
+.nombre-titulo-principal {
+  background: linear-gradient(to right, rgb(134, 239, 172), rgb(34, 197, 94));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-size: 200% 200%;
+  animation: gradiente 3s ease-in-out infinite;
+}
+
+.subtitulo-maquina-escribir {
+  font-size: 1.9rem;
+  color: rgb(209, 213, 219);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+/* Párrafos */
+.tamano-texto {
+  font-size: 1.10rem; 
+  line-height: 1.625;
+  color: rgb(209, 213, 219);
+}
+/* Texto más pequeño - contenido interno */
+.tamano-texto-pequeno {
+  font-size: 0.95 rem; /* 12px */
+  line-height: 1rem; /* 16px */
+    color: rgb(209, 213, 219);
+}
+
+/* Iconos sociales */
+.contenedor-social {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  opacity: 0;
+  animation: aparicion-gradual 0.8s ease-out forwards;
+  animation-delay: 1s;
+  justify-content: center;
+}
+
+.grupo-iconos-sociales {
+  display: flex;
+  gap: 1.5rem;
+}
+
+/* PARTÍCULAS Y EFECTOS DECORATIVOS*/
+
+.particula-flotante {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle, #8B5CF6, #EC4899);
+  border-radius: 50%;
+  opacity: 0;
+  animation: ciclo-particula 6s ease-in-out infinite;
+}
+
+.particula-nav {
+  position: absolute;
+  width: 0.25rem;
+  height: 0.25rem;
+  background: rgb(96, 165, 250);
+  border-radius: 9999px;
+}
+
+/* Navegación principal */
+.barra-navegacion {
+  position: fixed;
+  left: 1.5rem;
+  top: 30%;
+  transform: translateY(-50%);
+  z-index: 50;
+}
+
+/* Elementos del menú */
+.contenedor-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Botón del menú */
+.boton-menu {
+  position: relative;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(12px);
+  overflow: hidden;
+  transition: all 0.2s ease;
+  border: none;
+  cursor: pointer;
+}
+
+/* Estados del botón */
+.boton-menu-inactivo {
+  background: rgba(255, 255, 255, 0.8);
+  color: rgb(75, 85, 99);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.boton-menu-inactivo:hover {
+  background: white;
+  color: rgb(37, 99, 235);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* GRADIENTES PARA BOTONES ACTIVOS */
+
+.gradiente-azul {
+  background: linear-gradient(to bottom right, rgb(59, 130, 246), rgb(37, 99, 235));
+  color: white;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.gradiente-morado {
+  background: linear-gradient(to bottom right, rgb(168, 85, 247), rgb(147, 51, 234));
+  color: white;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.gradiente-verde {
+  background: linear-gradient(to bottom right, rgb(34, 197, 94), rgb(22, 163, 74));
+  color: white;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.gradiente-naranja {
+  background: linear-gradient(to bottom right, rgb(249, 115, 22), rgb(234, 88, 12));
+  color: white;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.gradiente-rojo {
+  background: linear-gradient(to bottom right, rgb(239, 68, 68), rgb(220, 38, 38));
+  color: white;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* INDICADORES Y OVERLAYS */
+
+.superposicion-boton {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 9999px;
+}
+
+.indicador-activo {
+  position: absolute;
+  left: -0.75rem;
+  top: 33.333333%;
+  transform: translateY(-50%);
+  width: 0.25rem;
+  height: 1.5rem;
+  border-radius: 9999px;
+}
+
+.indicador-azul {
+  background: linear-gradient(to bottom, rgb(59, 130, 246), rgb(37, 99, 235));
+}
+
+.indicador-morado {
+  background: linear-gradient(to bottom, rgb(168, 85, 247), rgb(147, 51, 234));
+}
+
+.indicador-verde {
+  background: linear-gradient(to bottom, rgb(34, 197, 94), rgb(22, 163, 74));
+}
+
+.indicador-naranja {
+  background: linear-gradient(to bottom, rgb(249, 115, 22), rgb(234, 88, 12));
+}
+
+.indicador-rojo {
+  background: linear-gradient(to bottom, rgb(239, 68, 68), rgb(220, 38, 38));
+}
+
+/* TOOLTIPS */
+
+.tooltip {
+  position: absolute;
+  left: 4rem;
+  top: 33.333333%;
+  transform: translateY(-50%);
+  padding: 0.5rem 0.75rem;
+  background: rgb(17, 24, 39);
+  color: white;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  border-radius: 0.5rem;
+  pointer-events: none;
+  white-space: nowrap;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  z-index: 20;
+}
+
+.tooltip-movil {
+  background: rgba(31, 41, 55, 0.95);
+  backdrop-filter: blur(4px);
+}
+
+.flecha-tooltip {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%) translateX(-0.25rem) rotate(45deg);
+  width: 0.5rem;
+  height: 0.5rem;
+  background: rgb(17, 24, 39);
+}
+
+/* Tablets y pantallas medianas */
+@media (max-width: 1024px) {
+  .animar-aparicion-gradual {
+    animation-duration: 0.6s;
+  }
+  
+  .cursor-maquina-escribir {
+    height: 20px;
+  }
+
+  .titulo-principal {
+    font-size: 3rem;
+  }
+
+  .subtitulo-maquina-escribir {
+    font-size: 1.5rem;
+  }
+
+  .contenedor-social {
+    justify-content: center;
+  }
+}
+
+/* Móviles */
+@media (max-width: 768px) {
+  .hover-icono-social:hover {
+    transform: scale(1.1) translateY(-2px);
+  }
+    .imagen-perfil {
+    width: 15rem;
+    height: 14rem;
+  }
+  
+  .contenedor-imagen-perfil {
+    position: relative;
+    justify-content: center;
+  }
+  
+  .hover-boton-cv:hover {
+    transform: scale(1.02) translateY(-1px);
+  }
+  
+  /* MANTENER HORIZONTAL */
+  .barra-navegacion {
+    left: 15%;
+    top: 2rem;
+    transform: translateX(-50%);
+  }
+  
+  .contenedor-menu {
+    display: flex;
+    flex-direction: row;
+    gap: 0.75rem; /* Gap más pequeño en móviles */
+  }
+  
+  .boton-menu {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+  
+  /* Indicadores horizontales en móviles */
+  .indicador-activo {
+    position: absolute;
+    left: 15%;
+    top: -0.5rem;
+    transform: translateX(-50%);
+    width: 2rem;
+    height: 0.2rem;
+    border-radius: 9999px;
+  }
+  
+  /* Tooltips horizontales en móviles */
+  .tooltip {
+    position: absolute;
+    left: 10%;
+    top: 3.5rem;
+    transform: translateX(-50%);
+    font-size: 0.6875rem;
+    padding: 0.375rem 0.625rem;
+  }
+  
+  .flecha-tooltip {
+    position: absolute;
+    left: 10%;
+    top: 0;
+    transform: translateX(-50%) translateY(-0.2rem) rotate(45deg);
+    width: 0.4rem;
+    height: 0.4rem;
+    background: rgb(17, 24, 39);
+  }
+
+  .titulo-principal {
+    font-size: 2.50rem;
+    text-align: center;
+    margin-top: 1rem ;
+  }
+
+  .subtitulo-maquina-escribir {
+    font-size: 1.55rem;
+    text-align: center;
+    margin-top: 1.5rem;
+  }
+  
+  .contenedor-social {
+    justify-content: center;
+    margin-top: 3rem;
+  }
+  .tarjeta-acerca-de {
+    @apply p-4;
+  }
+
+  .tamano-texto {
+  font-size: 1rem; 
+  line-height: 1;
+  color: rgb(209, 213, 219);
+  }
+
+  .tamano-texto-pequeno {
+  font-size: 0.55rem; /* 12px */
+  line-height: 1rem; /* 16px */
+  color: rgb(209, 213, 219);
+  }
+}
+
+/* Contenedores */
+.efecto-cristal {
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Sombras suaves */
+.sombra-suave {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Transiciones suaves */
+.transicion-suave {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tarjeta-acerca-de {
+  @apply efecto-cristal sombra-suave transicion-suave rounded-xl p-6 cursor-pointer;
+}
+

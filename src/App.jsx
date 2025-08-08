@@ -1,9 +1,22 @@
-
+import Fondo from "./componentes/fondo";
+import BarraNav from "./componentes/BarraNav";
+import Inicio from "./componentes/Inicio";
+import SobreMi from "./componentes/SobreMi";
+import Tecnologias from "./componentes/Tecnologias";
+import Educacion from "./componentes/Educacion";
+import Proyectos from  "./componentes/Proyectos";
+import './index.css'; // Asegúrate de importar tu CSS
 function App() {
 
   return (
     <>
-      <h1>Bienvenido a mi portafolio</h1>
+      <Fondo />
+      <BarraNav />
+      <Inicio />
+      <SobreMi />
+      <Tecnologias />
+      <Educacion/>
+      <Proyectos/>
     </>
   )
 }
