@@ -5,6 +5,7 @@ import { Github, Linkedin, Mail, Download } from 'lucide-react';
 const TextoMaquinaEscribir = ({ texto, className, velocidad = 100 }) => {
   const [textoMostrado, setTextoMostrado] = useState('');
   const [indiceActual, setIndiceActual] = useState(0);
+  
   useEffect(() => {
     if (indiceActual < texto.length) {
       const timeout = setTimeout(() => {
@@ -14,6 +15,7 @@ const TextoMaquinaEscribir = ({ texto, className, velocidad = 100 }) => {
       return () => clearTimeout(timeout);
     }
   }, [indiceActual, texto, velocidad]);
+  
   return (
     <div className={className} translate="no">
       {textoMostrado}
@@ -25,12 +27,15 @@ const TextoMaquinaEscribir = ({ texto, className, velocidad = 100 }) => {
 // Componente para iconos sociales
 const IconoSocial = ({ href, children, colorHover, className = "", esEmail = false, email = "" }) => {
   const [mostrarCopiado, setMostrarCopiado] = useState(false);
+  
   const manejarMouseEnter = (e) => {
     e.currentTarget.style.color = colorHover;
   };
+  
   const manejarMouseLeave = (e) => {
     e.currentTarget.style.color = '';
   };
+  
   const manejarClicEmail = async (e) => {
     e.preventDefault();
     try {
@@ -42,6 +47,7 @@ const IconoSocial = ({ href, children, colorHover, className = "", esEmail = fal
       window.location.href = `mailto:${email}`;
     }
   };
+  
   if (esEmail) {
     return (
       <div className="relative">
@@ -61,6 +67,7 @@ const IconoSocial = ({ href, children, colorHover, className = "", esEmail = fal
       </div>
     );
   }
+  
   return (
     <a
       href={href}
@@ -78,7 +85,6 @@ const IconoSocial = ({ href, children, colorHover, className = "", esEmail = fal
 // Componente para el botón CV
 const BotonCV = () => {
   const manejarDescargarCV = () => {
-    // Enlace para descargar el CV
     const enlace = document.createElement('a');
     enlace.href = '/Cv-RosangelaLeonS.pdf'; 
     enlace.download = 'CV-RosangelaLeon.pdf';
@@ -86,6 +92,7 @@ const BotonCV = () => {
     enlace.click();
     document.body.removeChild(enlace);
   };
+  
   return (
     <button 
       onClick={manejarDescargarCV}
@@ -99,7 +106,7 @@ const BotonCV = () => {
 
 // Componente principal
 const Inicio = () => {
-// Iconos sociales con enlaces 
+  // Iconos sociales con enlaces 
   const enlacesSociales = [
     {
       href: "https://github.com/rosangelaleon", 
@@ -119,95 +126,80 @@ const Inicio = () => {
       email: "rosileon262002@gmail.com"
     }
   ];
+  
   return (
     <div id="inicio" className="min-h-screen relative overflow-hidden">
-
       {/* Contenido Principal */}
-      <div className="relative z-10 flex items-center justify-between min-h-screen px-8 lg:px-16 max-w-7xl mx-auto">
-
-        {/* Contenido de Texto */}
-        <div className="flex-1 max-w-lg text-center lg:text-left mx-auto ml-3 lg:ml-16 xl:ml-20 mt-40 lg:mt-0">
-          {/* Título Principal */}
-          <div className="animar-aparicion">
-            <h1 className="titulo-principal">
-              Hola, soy {' '}
-              <span className="nombre-titulo-principal inline">
-                Rosangela
-              </span>
-            </h1>
-          </div>
-
-          {/* Subtítulo con efecto typewriter */}
-          <div className="aparicion-delay-500 mt-8">
-            <TextoMaquinaEscribir 
-              texto="Licenciada en Ciencias Informáticas | Desarrolladora Full Stack"
-              className="subtitulo-maquina-escribir"
-            />
-          </div>
-
-          {/* Frase */}
-          <div className="aparicion-delay-1000 mt-6">
-            <p className="text-gray-300 tamano-texto max-w-xl mx-auto lg:mx-0">
-              Apasionada por construir soluciones tecnológicas creativas y funcionales que conectan necesidades con código.
-            </p>
-          </div>
-
-          <div className="contenedor-social lg:justify-start">
-            {/* Iconos de Redes Sociales */}
-            <div className="grupo-iconos-sociales">
-              {enlacesSociales.map((social, indice) => (
-                <IconoSocial
-                  key={indice}
-                  href={social.href}
-                  colorHover={social.colorHover}
-                  esEmail={social.esEmail}
-                  email={social.email}
-                >
-                  {social.icono}
-                </IconoSocial>
-              ))}
+      <div className="relative z-10 min-h-screen pl-8 sm:pl-24 md:pl-28 lg:pl-32 xl:pl-16 pr-4 sm:pr-8 lg:pr-8 max-w-7xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-screen py-20 lg:py-0">
+          
+          {/* Contenido de Texto */}
+          <div className="order-2 lg:order-1 text-center lg:text-left max-w-2xl mx-auto lg:mx-0 lg:ml-8 xl:ml-16 2xl:ml-20">
+            {/* Título Principal */}
+            <div className="animar-aparicion">
+              <h1 className="titulo-principal">
+                Hola, soy {' '}
+                <span className="nombre-titulo-principal inline">
+                  Rosangela
+                </span>
+              </h1>
             </div>
 
-            {/* Botón CV */}
-            <BotonCV />
-          </div>
-        </div>
+            {/* Subtítulo con efecto typewriter */}
+            <div className="aparicion-delay-500 mt-6 lg:mt-8">
+              <TextoMaquinaEscribir 
+                texto="Licenciada en Ciencias Informáticas | Desarrolladora Full Stack"
+                className="subtitulo-maquina-escribir"
+              />
+            </div>
 
-        {/* Imagen de Perfil */}
-        <div className="hidden lg:flex flex-1 justify-center items-center">
-          <div className="contenedor-imagen-perfil">
-            {/* Contenedor de la imagen con efectos */}
-            <div className="relative z-10 aparicion-delay-800">
-              <div className="relative">
-                {/* Círculo de fondo animado */}
-                <div className="brillo-fondo-perfil"></div>
-                
-                {/* Imagen */}
-                <img 
-                  src="/Foto.png" 
-                  alt="Rosangela - Perfil"
-                  className="imagen-perfil"
-                />
-                
-                {/* Overlay de gradiente sutil */}
-                <div className="superposicion-perfil"></div>
+            {/* Frase */}
+            <div className="aparicion-delay-1000 mt-4 lg:mt-6">
+              <p className="text-gray-300 tamano-texto max-w-xl mx-auto lg:mx-0">
+                Apasionada por construir soluciones tecnológicas creativas y funcionales que conectan necesidades con código.
+              </p>
+            </div>
+
+            {/* Contenedor Social - Se adapta fluidamente */}
+            <div className="contenedor-social lg:justify-start">
+              {/* Iconos de Redes Sociales */}
+              <div className="grupo-iconos-sociales">
+                {enlacesSociales.map((social, indice) => (
+                  <IconoSocial
+                    key={indice}
+                    href={social.href}
+                    colorHover={social.colorHover}
+                    esEmail={social.esEmail}
+                    email={social.email}
+                  >
+                    {social.icono}
+                  </IconoSocial>
+                ))}
               </div>
+
+              {/* Botón CV */}
+              <BotonCV />
             </div>
           </div>
-        </div>
 
-        {/* Imagen móvil */}
-        <div className="lg:hidden absolute top-20 right-16">
-          <div className="contenedor-imagen-perfil">
-            <div className="relative z-10 aparicion-delay-300">
-              <div className="relative">
-                <div className="brillo-fondo-perfil"></div>
-                <img 
-                  src="/Foto.png" 
-                  alt="Rosangela - Perfil"
-                  className="imagen-perfil"
-                />
-                <div className="superposicion-perfil"></div>
+          {/* Imagen de Perfil - Siempre centrada y responsiva */}
+          <div className="order-1 lg:order-2 flex justify-center items-center">
+            <div className="contenedor-imagen-perfil">
+              <div className="relative z-10 aparicion-delay-300 lg:aparicion-delay-800">
+                <div className="relative">
+                  {/* Círculo de fondo animado */}
+                  <div className="brillo-fondo-perfil"></div>
+                  
+                  {/* Imagen - Tamaño fluido que se adapta */}
+                  <img 
+                    src="/Foto.png" 
+                    alt="Rosangela - Perfil"
+                    className="imagen-perfil mx-auto"
+                  />
+                  
+                  {/* Overlay de gradiente sutil */}
+                  <div className="superposicion-perfil"></div>
+                </div>
               </div>
             </div>
           </div>

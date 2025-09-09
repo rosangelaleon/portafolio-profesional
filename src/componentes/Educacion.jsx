@@ -78,6 +78,11 @@ export default function Educacion() {
 
   // Datos de certificaciones (organizadas por categorías)
   const datosCertificaciones = [
+        { titulo: "Git y GitHub: repositorio, commit y versiones", 
+      institucion: "ONE - Oracle Next Education", año: "2025", 
+      categoria: "Desarrollo", color: "bg-blue-500", 
+      imagen: "/certificados/git-gitHub.jpg" 
+    },
     { titulo: "Visual Studio Code y GitHub Copilot", 
       institucion: "Codigo Facilito", año: "2025", 
       categoria: "Desarrollo", color: "bg-blue-500", 
@@ -150,7 +155,10 @@ export default function Educacion() {
   };
 
   return (
-    <section id="educacion" className="max-w-6xl mx-auto px-6 py-16">
+    <section 
+      id="educacion" 
+      className="max-w-6xl mx-auto px-6 pt-20 pb-12 md:min-h-screen md:flex md:flex-col md:justify-center md:pt-0 md:px-6 lg:px-16 xl:px-6 2xl:px-6 md:pl-20 lg:pl-24 xl:pl-16 2xl:pl-6"
+    >
       <motion.div
         variants={variacionesContenedor}
         initial="hidden"
@@ -161,7 +169,7 @@ export default function Educacion() {
         {/* Título Principal  */}
         <motion.h2 
           variants={variacionesElemento}
-          className="titulo-principal text-center mb-4"
+          className="titulo-principal text-center animar-aparicion mb-4"
         >
           Educación
         </motion.h2>
@@ -185,29 +193,29 @@ export default function Educacion() {
               ease: "easeInOut"
             }
           }}
-          className="tarjeta-acerca-de w-full max-w-7xl mx-auto p-12"
+          className="tarjeta-acerca-de w-full max-w-7xl mx-auto"
         >
-          {/* Layout de dos columnas */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full">
+          {/* Layout responsive - 1 columna en móvil, 2 en desktop */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 h-full">
             
             {/* SECCIÓN 1: Formación Académica */}
             <motion.div 
               variants={variacionesElemento}
-              className="space-y-8"
+              className="space-y-6 md:space-y-8"
             >
               <div className="flex items-center gap-2 mb-4">
                 <BookOpen className="w-5 h-5 text-blue-400" />
-                <h3 className="text-lg font-bold  tamano-texto">
+                <h3 className="text-lg font-bold tamano-texto">
                   Formación Académica
                 </h3>
               </div>
               
-              <div className="space-y-12">
+              <div className="space-y-8 md:space-y-12">
                 {datosEducacion.map((educacion, index) => (
                   <motion.div
                     key={index}
                     variants={variacionesElemento}
-                    className="border-l-2 border-blue-400 pl-4 py-2  "
+                    className="border-l-2 border-blue-400 pl-4 py-2"
                   >
                     <div className="flex items-start gap-3">
                       <div className="flex-shrink-0 mt-1">
@@ -252,8 +260,8 @@ export default function Educacion() {
                 </h3>
               </div>
               
-              {/* Grid compacto de certificaciones */}
-              <div className="space-y-0.5 max-h-72 overflow-y-auto pr-2">
+              {/* Grid compacto de certificaciones - altura ajustable */}
+              <div className="space-y-2 max-h-64 md:max-h-72 lg:max-h-80 overflow-y-auto pr-2">
                 {datosCertificaciones.map((certificacion, index) => (
                   <motion.div
                     key={index}
@@ -264,7 +272,7 @@ export default function Educacion() {
                     }}
                     className="relative cursor-pointer"
                   >
-                    <div className="bg-gray-800 bg-opacity-30 backdrop-blur-sm rounded-md p-1.5 border border-gray-700 hover:border-gray-600 transition-all duration-300">
+                    <div className="bg-gray-800 bg-opacity-30 backdrop-blur-sm rounded-md p-1.5 md:p-2 border border-gray-700 hover:border-gray-600 transition-all duration-300">
                       <div className="flex items-start gap-2">
                         <div className="flex-1 min-w-0">
                           <h4 className="font-semibold mb-1 tamano-texto" translate="no">
@@ -287,7 +295,7 @@ export default function Educacion() {
                                 className="p-1 text-gray-400 transition-colors duration-200 hover:bg-gray-700 rounded"
                                 title="Ver certificado"
                               >
-                                <ExternalLink className="w-5 h-5" />
+                                <ExternalLink className="w-4 h-4 md:w-5 md:h-5" />
                               </button>
                             </div>
                           </div>
@@ -302,10 +310,10 @@ export default function Educacion() {
         </motion.div>
       </motion.div>
 
-      {/* Muestra el certificado */}
+      {/* Modal de certificado */}
       {certificadoSeleccionado && (
         <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4">
-          <div className="relative max-w-4xl max-h-[90vh] bg-gray-900 rounded-lg overflow-hidden">
+          <div className="relative max-w-4xl max-h-[90vh] w-full bg-gray-900 rounded-lg overflow-hidden">
             {/* Botón de cerrar */}
             <button
               onClick={cerrarModal}

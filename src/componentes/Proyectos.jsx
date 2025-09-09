@@ -48,8 +48,8 @@ export default function Proyectos() {
         },
         {
             id: 2,
-            titulo: "Portafolio Web Personal",
-            descripcion: "Portafolio web moderno y responsivo con animaciones suaves y efectos visuales 3D.",
+            titulo: "Portafolio Web Profesional",
+            descripcion: "Diseño moderno y efectos 3D que presenta mi perfil profesional completo. Incluye animaciones suaves y se adapta perfectamente a cualquier dispositivo para una experiencia visual atractiva.",
             tecnologias: ["React", "Tailwind CSS", "JavaScript", "Vite"],
             tipoProyecto: "Aplicación Web",
             enlaceGithub: "https://github.com/rosangelaleon/portafolio-profesional",
@@ -59,13 +59,13 @@ export default function Proyectos() {
         },
         {
             id: 3,
-            titulo: "Agente IA para Floristería",
-            descripcion: "Asistente virtual inteligente para automatizar la atención al cliente con recomendaciones personalizadas.",
-            tecnologias: ["Python", "OpenAI API", "Flask"],
+            titulo: "FloraBot",
+            descripcion:"Chatbot inteligente para atención de consultas sobre horarios, ubicación, productos, precios y servicios de floristería",
+            tecnologias: ["JavaScript", "Python", "OpenAI API", "Flask", "PostgreSQL"],
             tipoProyecto: "Inteligencia Artificial",
-            enlaceGithub: "https://github.com/dylanc/floristeria-ai",
-            enlaceDemo: "https://floristeria-ai-demo.vercel.app",
-            imagenes: ["/images/proyectos/ai-florist-1.png"],
+            enlaceGithub: "https://github.com/rosangelaleon/Floristeria-ChatBot",
+            enlaceDemo: "https://floristeria-chatbot.onrender.com/",
+            imagenes: ["/proyectos/ChatBot.PNG"],
             icono: <Bot className="w-4 h-4" />, colorTema: "green"
         }
     ];
@@ -95,7 +95,10 @@ export default function Proyectos() {
         setMostrarGaleria(null);
     };
     return (
-        <section id="proyectos" className="max-w-6xl mx-auto px-6 py-16 pb-24">
+        <section 
+            id="proyectos" 
+            className="max-w-6xl mx-auto px-6 pt-20 pb-12 md:min-h-screen md:flex md:flex-col md:justify-center md:pt-0 md:px-6 lg:px-16 xl:px-6 2xl:px-6 md:pl-20 lg:pl-24 xl:pl-16 2xl:pl-6"
+        >
             <motion.div
                 variants={variacionesContenedor}
                 initial="hidden"
@@ -107,7 +110,7 @@ export default function Proyectos() {
                 {/* Título Principal */}
                 <motion.h2 
                     variants={variacionesElemento} 
-                    className="titulo-principal text-center"
+                    className="titulo-principal text-center animar-aparicion"
                 >
                     Proyectos
                 </motion.h2>
@@ -127,11 +130,11 @@ export default function Proyectos() {
                     transition={{
                         boxShadow: { duration: 4, repeat: Infinity, ease: "easeInOut" }
                     }}
-                    className="tarjeta-acerca-de w-full max-w-7xl mx-auto p-12"
+                    className="tarjeta-acerca-de w-full max-w-7xl mx-auto"
                 >
 
                     {/* Grid de proyectos */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
                         {listaProyectos.map((proyecto) => (
                             <motion.div
                                 key={proyecto.id}
@@ -140,7 +143,7 @@ export default function Proyectos() {
                                 className="bg-gray-800 bg-opacity-30 backdrop-blur-sm rounded-lg p-3 border border-gray-700 hover:border-gray-600 transition-all duration-300"
                             >
                                 {/* Imagen del proyecto */}
-                                <div className="relative h-32 mb-3 rounded-md overflow-hidden bg-gray-800">
+                                <div className="relative h-28 md:h-40 mb-3 rounded-md overflow-hidden bg-gray-800">
                                     <img src={proyecto.imagenes[imagenActual[proyecto.id] || 0]}
                                         alt={`${proyecto.titulo} - Imagen`}
                                         className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
@@ -153,7 +156,7 @@ export default function Proyectos() {
                                             className="absolute top-1 right-1 p-1 text-white bg-black bg-opacity-50 hover:bg-opacity-70 transition-colors duration-200 rounded"
                                             title="Ver galería"
                                         >
-                                            <Image className="w-5 h-5" />
+                                            <Image className="w-4 h-4 md:w-5 md:h-5" />
                                         </button>
                                     )}
 
@@ -161,7 +164,7 @@ export default function Proyectos() {
                                     <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-1.5">
                                         <div className="flex items-center gap-1">
                                             {proyecto.icono}
-                                            <span className="text-white font-medium">
+                                            <span className="text-white font-medium text-xs md:text-sm">
                                                 {proyecto.tipoProyecto}
                                             </span>
                                         </div>
@@ -170,7 +173,7 @@ export default function Proyectos() {
 
                                 {/* Contenido del proyecto */}
                                 <div className="space-y-2">
-                                    <h4 className="tamano-texto-pequeno" translate="no">
+                                    <h4 className="tamano-texto-pequeno md:tamano-texto font-semibold" translate="no">
                                         {proyecto.titulo}
                                     </h4>
                                     <p className="tamano-texto-pequeno leading-relaxed">
@@ -182,7 +185,7 @@ export default function Proyectos() {
                                         {proyecto.tecnologias.map((tecnologia, indice) => (
                                             <span
                                                 key={indice}
-                                                className={`inline-block px-1.5 py-0.5 rounded-full font-medium ${obtenerClaseColor(proyecto.colorTema)} bg-opacity-80 tamano-texto-pequeno`}
+                                                className={`inline-block px-1.5 py-0.5 rounded-full font-medium text-white ${obtenerClaseColor(proyecto.colorTema)} bg-opacity-80 text-xs`}
                                                 translate="no"
                                             >
                                                 {tecnologia}
@@ -235,31 +238,31 @@ export default function Proyectos() {
                 </motion.div>
             </motion.div>
 
-            {/* Modal de galería */}
+            {/* Modal de galería - Responsive */}
             {mostrarGaleria && (
-                <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4">
-                    <div className="relative w-[90vw] max-w-5xl h-[85vh] bg-gray-900 rounded-lg overflow-hidden flex flex-col">
+                <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-2 md:p-4">
+                    <div className="relative w-[95vw] md:w-[90vw] max-w-5xl h-[90vh] md:h-[85vh] bg-gray-900 rounded-lg overflow-hidden flex flex-col">
 
                         {/* Botón de cerrar */}
                         <button
                             onClick={cerrarModal}
-                            className="absolute top-4 right-4 z-60 bg-gray-800 hover:bg-gray-700 text-white p-2 rounded-full transition-colors"
+                            className="absolute top-2 right-2 md:top-4 md:right-4 z-60 bg-gray-800 hover:bg-gray-700 text-white p-1.5 md:p-2 rounded-full transition-colors"
                         >
-                            <X className="w-5 h-5" />
+                            <X className="w-4 h-4 md:w-5 md:h-5" />
                         </button>
 
                         {/* Encabezado del modal */}
-                        <div className="bg-gray-800 p-4 border-b border-gray-700 flex-shrink-0">
-                            <h3 className="text-white font-semibold">
+                        <div className="bg-gray-800 p-3 md:p-4 border-b border-gray-700 flex-shrink-0">
+                            <h3 className="text-white font-semibold text-sm md:text-base">
                                 {listaProyectos.find(p => p.id === mostrarGaleria)?.titulo}
                             </h3>
-                            <p className="tamano-texto-pequeno">
+                            <p className="tamano-texto-pequeno text-gray-300">
                                 {listaProyectos.find(p => p.id === mostrarGaleria)?.tipoProyecto}
                             </p>
                         </div>
 
                         {/* Contenedor de imagen con tamaño fijo */}
-                        <div className="relative flex-1 bg-gray-900 flex items-center justify-center p-4">
+                        <div className="relative flex-1 bg-gray-900 flex items-center justify-center p-2 md:p-4">
                             <div className="w-full h-full flex items-center justify-center">
                                 <img 
                                     src={listaProyectos.find(p => p.id === mostrarGaleria)?.imagenes[imagenActual[mostrarGaleria] || 0]}
@@ -273,25 +276,25 @@ export default function Proyectos() {
                                 <>
                                     <button
                                         onClick={() => imagenAnterior(mostrarGaleria)}
-                                        className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center text-white transition-colors"
+                                        className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center text-white transition-colors"
                                     >
-                                        <ChevronLeft className="w-6 h-6" />
+                                        <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
                                     </button>
                                     
                                     <button
                                         onClick={() => siguienteImagen(mostrarGaleria)}
-                                        className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center text-white transition-colors"
+                                        className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center text-white transition-colors"
                                     >
-                                        <ChevronRight className="w-6 h-6" />
+                                        <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
                                     </button>
 
                                     {/* Indicadores */}
-                                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
+                                    <div className="absolute bottom-2 md:bottom-4 left-1/2 -translate-x-1/2 flex space-x-1 md:space-x-2">
                                         {listaProyectos.find(p => p.id === mostrarGaleria)?.imagenes.map((_, indice) => (
                                             <button
                                                 key={indice}
                                                 onClick={() => setImagenActual(prev => ({ ...prev, [mostrarGaleria]: indice }))}
-                                                className={`w-3 h-3 rounded-full transition-colors ${
+                                                className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-colors ${
                                                     indice === (imagenActual[mostrarGaleria] || 0) ? 'bg-white' : 'bg-white/50'}`
                                                 }
                                             />

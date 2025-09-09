@@ -1,6 +1,7 @@
 import React from 'react';
 // eslint-disable-next-line no-unused-vars
 import { motion } from 'framer-motion';
+import { Github } from 'lucide-react';
 
 // Configuración de las tecnologias (nombres, iconos y colores)
 export default function Tecnologias() {
@@ -9,7 +10,7 @@ export default function Tecnologias() {
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg", 
       color: "#E34F26" 
     },
-    { name: "CSS3", 
+    { name: "CSS", 
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg", 
       color: "#1572B6" 
     },
@@ -32,6 +33,10 @@ export default function Tecnologias() {
     { name: "Python", 
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg", 
       color: "#3776AB" 
+    },
+    { name: "Flask", 
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg", 
+      color: "#ffffff" 
     },
     { name: "Java", 
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg", 
@@ -70,12 +75,9 @@ export default function Tecnologias() {
       color: "#F05032" 
     },
     { name: "GitHub", 
-      icon: "data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjQgMjQiIGZpbGw9IiNmZmZmZmYiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTEyIDBjLTYuNjI2IDAtMTIgNS4zNzMtMTIgMTIgMCA1LjMwMiAzLjQzOCA5LjggOC4yMDcgMTEuMzg3LjU5OS4xMTEuNzkzLS4yNjEuNzkzLS41Nzd2LTIuMjM0Yy0zLjMzOC43MjYtNC4wMzMtMS40MTYtNC4wMzMtMS40MTYtLjU0Ni0xLjM4Ny0xLjMzMy0xLjc1Ni0xLjMzMy0xLjc1Ni0xLjA4OS0uNzQ1LjA4My0uNzI5LjA4My0uNzI5IDEuMjA1LjA4NCAxLjgzOSAxLjIzNyAxLjgzOSAxLjIzNyAxLjA3IDEuODM0IDIuODA3IDEuMzA0IDMuNDkyLjk5Ny4xMDctLjc3NS40MTgtMS4zMDUuNzYyLTEuNjA0LTIuNjY1LS4zMDUtNS40NjctMS4zMzQtNS40NjctNS45MzEgMC0xLjMxMS40NjktMi4zODEgMS4yMzYtMy4yMjEtLjEyNC0uMzAzLS41MzUtMS41MjQuMTE3LTMuMTc2IDAgMCAxLjAwOC0uMzIyIDMuMzAxIDEuMjMuOTU3LS4yNjYgMS45ODMtLjM5OSAzLjAwMy0uNDA0IDEuMDIuMDA1IDIuMDQ3LjEzOCAzLjAwNi40MDQgMi4yOTEtMS41NTIgMy4yOTctMS4yMyAzLjI5Ny0xLjIzLjY1MyAxLjY1My4yNDIgMi44NzQuMTE4IDMuMTc2Ljc3Ljg0IDEuMjM1IDEuOTExIDEuMjM1IDMuMjIxIDAgNC42MDktMi44MDcgNS42MjQtNS40NzkgNS45MjEuNDMuMzcyLjgyMyAxLjEwMi44MjMgMi4yMjJ2My4yOTNjMCAuMzE5LjE5Mi42OTQuODAxLjU3NiA0Ljc2NS0xLjU4OSA4LjE5OS02LjA4NiA4LjE5OS0xMS4zODYgMC02LjYyNy01LjM3My0xMi0xMi0xMnoiLz48L3N2Zz4K", 
-      color: "#ffffff" 
-    },
-    { name: "Docker", 
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg", 
-      color: "#2496ED" 
+      icon: Github, // Componente de Lucide React
+      color: "#ffffff",
+      isComponent: true // Marcador para identificar que es un componente
     }
   ];
 
@@ -131,8 +133,12 @@ export default function Tecnologias() {
       }
     }
   };
+
   return (
-    <section id="tecnologias" className="max-w-6xl mx-auto px-6 py-16">
+    <section 
+      id="tecnologias" 
+      className="max-w-6xl mx-auto px-6 pt-20 pb-12 md:min-h-screen md:flex md:flex-col md:justify-center md:pt-0 md:px-6 lg:px-16 xl:px-6 2xl:px-6 md:pl-20 lg:pl-24 xl:pl-16 2xl:pl-6"
+    >
       <motion.div
         variants={Contenedor}
         initial="hidden"
@@ -144,7 +150,7 @@ export default function Tecnologias() {
         {/* Título Principal */}
         <motion.h2 
           variants={Elemento}
-          className="titulo-principal text-center"
+          className="titulo-principal text-center animar-aparicion"
         >
           Tecnologías
         </motion.h2>
@@ -162,32 +168,36 @@ export default function Tecnologias() {
             ]
           }}
           transition={{
-            boxShadow: { duration: 4, repeat: Infinity, ease: "easeInOut"
-            }
+            boxShadow: { duration: 4, repeat: Infinity, ease: "easeInOut"}
           }}
-          className="tarjeta-acerca-de w-full max-w-7xl mx-auto p-12"
+          className="tarjeta-acerca-de w-full max-w-7xl mx-auto"
         >
           <motion.div 
             variants={ContainerCascada}
-            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 justify-items-center"
+            className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-6 gap-3 sm:gap-4 md:gap-5 lg:gap-6 justify-items-center"
           >
             {habilidadesTecnicas.map((habilidad, indice) => (
               <motion.div
                 key={indice}
                 variants={ItemCascada}
-                className="flex flex-col items-center justify-center"
+                className="flex flex-col items-center justify-center p-2"
               >
-                {/* Icono */}
-                <img 
-                  src={habilidad.icon} 
-                  alt={`${habilidad.name} icon`}
-                  className="w-10 h-10 object-contain mb-3 transition-transform duration-300 hover:scale-110"
-                  loading="lazy"
-                  style={{ filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.3))'}}
-                />
+                {/* Icono - Renderizado condicional */}
+                {habilidad.isComponent ? (
+                  <habilidad.icon 
+                    className="w-9 h-9 sm:w-10 sm:h-10 md:w-10 md:h-10 lg:w-11 lg:h-11 object-contain mb-1 sm:mb-2 md:mb-3 transition-transform duration-300 icono-sombra text-white"
+                  />
+                ) : (
+                  <img 
+                    src={habilidad.icon} 
+                    alt={`${habilidad.name} icon`}
+                    className="w-9 h-9 sm:w-10 sm:h-10 md:w-10 md:h-10 lg:w-11 lg:h-11 object-contain mb-1 sm:mb-2 md:mb-3 transition-transform duration-300 icono-sombra"
+                    loading="lazy"
+                  />
+                )}
 
                 {/* Nombre */}
-                <span className="tamano-texto text-center font-medium " translate="no">
+                <span className="tamano-texto text-center font-medium" translate="no">
                   {habilidad.name}
                 </span>
               </motion.div>
