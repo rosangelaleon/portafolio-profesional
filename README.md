@@ -1,12 +1,23 @@
-# React + Vite
+# Portafolio Web
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Portafolio web moderno y responsivo con efectos 3D que presenta mi perfil profesional completo como desarrolladora Full Stack.
 
-Currently, two official plugins are available:
+## Tecnologías Utilizadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **JavaScript** - Lenguaje de programación principal
+- **React** - Biblioteca principal para la interfaz
+- **Vite** - Herramienta de construcción rápida
+- **Tailwind CSS** - Framework de estilos y diseño responsivo
+- **Three.js** - Gráficos y efectos 3D
+- **Framer Motion** - Animaciones y transiciones
+- **Lucide React** - Iconografía moderna
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Secciones
+- **Inicio**: Presentación personal con efectos visuales
+- **Sobre Mí**: Mi perfil profesional y motivaciones
+- **Tecnologías**: Stack tecnológico 
+- **Educación**: Formación académica y certificaciones
+- **Proyectos**: Muestra los trabajos desarrollados
+- 
+## 🌐 Demo
+https://portafolio-profesional-5gh8.vercel.app/
