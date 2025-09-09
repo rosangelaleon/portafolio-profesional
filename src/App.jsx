@@ -1,4 +1,4 @@
-import Fondo from "./componentes/fondo";
+import Fondo from "./componentes/Fondo";
 import BarraNav from "./componentes/BarraNav";
 import Inicio from "./componentes/Inicio";
 import SobreMi from "./componentes/SobreMi";
